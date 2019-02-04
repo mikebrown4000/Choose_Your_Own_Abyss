@@ -1,4 +1,4 @@
-console.log('hi');
+console.log('connected');
 
 //*********FLOW*********
 //1.PRESENT TEXT
@@ -8,8 +8,35 @@ console.log('hi');
 //5.MOVE TO NEW AREA
 //6.REPEAT
 
+//global variable that evaluates player position:
+let userLocation = [5,14];
 
-//FUNCTION CITY BAYBAY!!!!
+
+
+
+
+//*************FUNCTION CITY BABY!!!!***************
+
+//evaluates choice with target. calls by make choice
+function evalChoice(ev){
+  //conditional to change background
+  /*
+  if(ev.target.classList === "choiceTwo"){
+    newBackground = 'red';
+    userLocation[0] = 1;
+  } else if (ev.target.classList === 'choiceTwo'){
+    newBackground = 'green';
+    userLocation[0] = 2;
+  } else if (ev.target.classList === 'choiceThree'){
+    newBackground = 'orange';
+    userLocation[0] = 3;
+  }
+  */
+  //call make choice
+  makeChoice();
+}
+
+
 //removeDivs Declaration
 function removeDivs(){
   console.log('entered removeDivs');
@@ -22,7 +49,7 @@ function removeDivs(){
   console.log('passed while loop');
 };
 
-//make new divs function (very under construction)
+//make new divs function (very under construction)(should respond to first choice)
 function makeDivs(){
   console.log('entered make divs');
   for (var i = 0; i < 3; i++) {
@@ -36,9 +63,30 @@ function makeDivs(){
 //changeBackground Declaration
 function changeBackground(){
   console.log('changeBackground called');
- const bodyEl = document.querySelector('body');
- bodyEl.style.background = 'red';
+  const bodyEl = document.querySelector('body');
+  bodyEl.style.background = newBackground;
 };
+
+
+function makeChoice(){
+  console.log('makeChoice called');
+  //assign background
+  changeBackground();
+  console.log('passed changeBackground');
+  //remove divs()
+  removeDivs();
+  console.log('passed removeDivs');
+  //remove (animated)
+  //find text
+  //display text (animated)
+  //change gamestate (make new divs)
+  makeDivs();
+  console.log('passed makeDivs');
+  //give event listeners
+  //display divs (animated)
+  //await response
+};
+
 
 
 //this is going to be a goddamn mess of a function..
@@ -57,7 +105,7 @@ function loadNewWorld(){
 };
 
 
-
+//*********FUNCTION CITY LIMITS***************
 
 
 //finds divs or chocies
@@ -65,29 +113,12 @@ const choiceOne = document.getElementById('choiceOne');
 console.log(choiceOne);
 const choiceTwo = document.getElementById('choiceTwo');
 console.log(choiceTwo);
+const choiceThree = document.getElementById('choiceThree');
+console.log(choiceThree);
 
 let newBackground = 'red';
 
 //assign event listenrs:
-choiceOne.addEventListener('click', makeChoice);
-choiceTwo.addEventListener('click', makeChoice);
-
-
-
-function makeChoice(){
-//assign background
-changeBackground();
-console.log('passed changeBackground');
-//remove divs()
-removeDivs();
-console.log('passed removeDivs');
-//remove (animated)
-//find text
-//display text (animated)
-//change gamestate (make new divs)
-makeDivs();
-console.log('passed makeDivs');
-  //give event listeners
-//display divs (animated)
-//await response
-};
+choiceOne.addEventListener('click', evalChoice);
+choiceTwo.addEventListener('click', evalChoice);
+choiceThree.addEventListener('click', evalChoice);
