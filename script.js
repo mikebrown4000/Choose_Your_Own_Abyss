@@ -1,8 +1,32 @@
 console.log('hi');
 
-//get buttons
-//assign event listeners
-//remove button
+//*********FLOW*********
+//1.PRESENT TEXT
+//2.PRESENT CHOICES
+//3.REMOVE CHOICES
+//4.REPEAT
+
+
+//FUNCTION CITY BAYBAY!!!!
+//removeDivs Declaration
+function removeDivs(){
+  console.log('entered removeDivs');
+  const divParent = document.querySelector('section');
+  console.log(divParent);
+  /*
+  while(divParent.firstChild){
+    divParent.removeChild(divParent.firstChild);
+  }
+  */
+};
+//changeBackground Declaration
+function changeBackground(){
+  console.log('changeBackground called');
+ const bodyEl = document.querySelector('body');
+ bodyEl.style.background = 'red';
+};
+
+
 
 
 const choiceOne = document.getElementById('choiceOne');
@@ -14,14 +38,27 @@ let newBackground = 'red';
 
 //assign event listenrs:
 choiceOne.addEventListener('click', makeChoice);
-choiceOne.addEventListener('hover', changeBackground);
+
 choiceTwo.addEventListener('click', makeChoice);
-choiceTwo.addEventListener('hover', changeBackground);
+
 
 
 function makeChoice(){
 //assign background
+changeBackground();
+console.log('passed changeBackground');
 //remove divs()
+removeDivs();
+console.log('passed removeDivs');
+
+
+  //go through main removing divs
+  /*
+  while(divParent.firstChild){
+    divParent.removeChild(divParent.firstChild);
+  }
+  */
+};
 //remove (animated)
 //find text
 //display text (animated)
@@ -30,21 +67,3 @@ function makeChoice(){
   //give event listeners
 //display divs (animated)
 //await response
-
-};
-
-
-
-function changeBackground(){
- const bodyEl = document.querySelector('body');
- bodyEl.style.background = 'red';
-};
-
-//remove divs called in choice made and background change
-function removeDivs(){
-  const divParent = document.querySelector('main');
-  //go through main removing divs
-  while(divParent.firstChild){
-    divParent.removeChild(divParent.firstChild);
-  }
-};
