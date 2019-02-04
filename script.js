@@ -8,11 +8,10 @@ console.log('connected');
 //5.MOVE TO NEW AREA
 //6.REPEAT
 
-//global variable that evaluates player position:
+//global variables
 let userLocation = [5,14];
-
-
-
+let newChoice = '';
+let newBackground = 'red';
 
 
 //*************FUNCTION CITY BABY!!!!***************
@@ -20,20 +19,12 @@ let userLocation = [5,14];
 //evaluates choice with target. calls by make choice
 function evalChoice(ev){
   //conditional to change background
-  console.log('eval choice called');
-
   if(newChoice === 'choiceOne'){
     newBackground = 'red';
-    console.log('background assigned');
-
   } else if (newChoice === 'choiceTwo'){
     newBackground = 'green';
-    console.log('background assigned');
-
   } else if (newChoice === 'choiceThree'){
     newBackground = 'orange';
-    console.log('background assigned');
-    
   }
   //call make choice
   makeChoice();
@@ -53,17 +44,63 @@ function removeDivs(){
 };
 
 //make new divs function (very under construction)(should respond to first choice)
-function makeDivs(){
-  console.log('entered make divs');
-  for (var i = 0; i < 3; i++) {
-  const newChoice = document.createElement('div');
-  newChoice.textContent = 'New Choice';
-  document.querySelector('section').appendChild(newChoice);
+function decideDivs(){
+  if(newChoice === 'choiceOne'){
+    makeGiantDivs();
+  }else if(newChoice === 'choiceTwo'){
+    makeFuzzyDivs();
+  }else if(newChoice === 'choiceThree'){
+    makeSunDivs();
   }
 };
 
+function makeGiantDivs(){
+  console.log('entered giant divs');
+  //comfort giant choice
+  const choiceOne = document.createElement('div');
+  choiceOne.textContent = 'Comfort';
+  document.querySelector('section').appendChild(choiceOne);
 
-//changeBackground Declaration
+  //steal giant choice
+  const choiceTwo = document.createElement('div');
+  choiceTwo.textContent = 'Steal';
+  document.querySelector('section').appendChild(choiceTwo);
+  //escape giant choice
+  const choiceThree = document.createElement('div');
+  choiceThree.textContent = 'Escape';
+  document.querySelector('section').appendChild(choiceThree);
+};
+
+function makeFuzzyDivs(){
+  console.log('entered fuzzy divs');
+  //pet fuzzys choice
+  const choiceOne = document.createElement('div');
+  choiceOne.textContent = 'Love';
+  document.querySelector('section').appendChild(choiceOne);
+  //challenge fuzzys choice
+  const choiceTwo = document.createElement('div');
+  choiceTwo.textContent = 'Challenge';
+  document.querySelector('section').appendChild(choiceTwo);
+};
+
+function makeSunDivs(){
+  console.log('entered sun divs');
+  //crash sun choice
+  const choiceOne = document.createElement('div');
+  choiceOne.textContent = 'Crash';
+  document.querySelector('section').appendChild(choiceOne);
+  //live sun choice
+  const choiceTwo = document.createElement('div');
+  choiceTwo.textContent = 'Live';
+  document.querySelector('section').appendChild(choiceTwo);
+  //explore sun choice
+  const choiceThree = document.createElement('div');
+  choiceThree.textContent = 'Explore';
+  document.querySelector('section').appendChild(choiceThree);
+};
+
+
+//changeBackground Declaration:
 function changeBackground(){
   console.log('changeBackground called');
   const bodyEl = document.querySelector('body');
@@ -72,20 +109,17 @@ function changeBackground(){
 
 
 function makeChoice(){
-  console.log('makeChoice called');
   //assign background
   changeBackground();
-  console.log('passed changeBackground');
   //remove divs()
   removeDivs();
-  console.log('passed removeDivs');
   //remove (animated)
   //find text
   //display text (animated)
   //change gamestate (make new divs)
-  makeDivs();
-  console.log('passed makeDivs');
+  decideDivs();
   //give event listeners
+  attachListeners();
   //display divs (animated)
   //await response
 };
@@ -111,7 +145,7 @@ function loadNewWorld(){
 //*********FUNCTION CITY LIMITS***************
 
 
-//finds divs or chocies
+
 const choiceOne = document.getElementById('choiceOne');
 console.log(choiceOne);
 const choiceTwo = document.getElementById('choiceTwo');
@@ -122,19 +156,26 @@ console.log(choiceThree);
 
 
 
-let newChoice = '';
-let newBackground = 'red';
 
+
+//*********Program Start**************
+
+
+function attachListeners(){
 //assign event listeners / log new choice / call evalChoice:
-choiceOne.addEventListener('click', function(){
-  newChoice = this.getAttribute("id")
-  evalChoice();
-});
-choiceTwo.addEventListener('click', function(){
-  newChoice = this.getAttribute("id")
-  evalChoice();
-});
-choiceThree.addEventListener('click', function(){
-  newChoice = this.getAttribute("id")
-  evalChoice();
-});
+  choiceOne.addEventListener('click', function(){
+    newChoice = this.getAttribute("id")
+    evalChoice();
+  });
+  choiceTwo.addEventListener('click', function(){
+    newChoice = this.getAttribute("id")
+    evalChoice();
+  });
+  choiceThree.addEventListener('click', function(){
+    newChoice = this.getAttribute("id")
+    evalChoice();
+  });
+};
+
+
+attachListeners();
