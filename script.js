@@ -20,18 +20,21 @@ let userLocation = [5,14];
 //evaluates choice with target. calls by make choice
 function evalChoice(ev){
   //conditional to change background
-  /*
-  if(ev.target.classList === "choiceTwo"){
+  console.log('eval choice called');
+
+  if(newChoice === 'choiceOne'){
     newBackground = 'red';
-    userLocation[0] = 1;
-  } else if (ev.target.classList === 'choiceTwo'){
+    console.log('background assigned');
+
+  } else if (newChoice === 'choiceTwo'){
     newBackground = 'green';
-    userLocation[0] = 2;
-  } else if (ev.target.classList === 'choiceThree'){
+    console.log('background assigned');
+
+  } else if (newChoice === 'choiceThree'){
     newBackground = 'orange';
-    userLocation[0] = 3;
+    console.log('background assigned');
+    
   }
-  */
   //call make choice
   makeChoice();
 }
@@ -116,9 +119,22 @@ console.log(choiceTwo);
 const choiceThree = document.getElementById('choiceThree');
 console.log(choiceThree);
 
+
+
+
+let newChoice = '';
 let newBackground = 'red';
 
-//assign event listenrs:
-choiceOne.addEventListener('click', evalChoice);
-choiceTwo.addEventListener('click', evalChoice);
-choiceThree.addEventListener('click', evalChoice);
+//assign event listeners / log new choice / call evalChoice:
+choiceOne.addEventListener('click', function(){
+  newChoice = this.getAttribute("id")
+  evalChoice();
+});
+choiceTwo.addEventListener('click', function(){
+  newChoice = this.getAttribute("id")
+  evalChoice();
+});
+choiceThree.addEventListener('click', function(){
+  newChoice = this.getAttribute("id")
+  evalChoice();
+});
