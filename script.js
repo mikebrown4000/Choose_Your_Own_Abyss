@@ -13,11 +13,10 @@ function removeDivs(){
   console.log('entered removeDivs');
   const divParent = document.querySelector('section');
   console.log(divParent);
-  /*
   while(divParent.firstChild){
     divParent.removeChild(divParent.firstChild);
   }
-  */
+  console.log('passed while loop');
 };
 //changeBackground Declaration
 function changeBackground(){
@@ -25,6 +24,18 @@ function changeBackground(){
  const bodyEl = document.querySelector('body');
  bodyEl.style.background = 'red';
 };
+
+function makeDivs(){
+
+  //get passed user decision and gamestate
+    //// IDEA:  check choice counter?
+
+  //make divs accordingly
+  //if statement if first decision:
+    //make giant divs,fuzzy divs, or sun divs
+  //else make giant endings, fuzzy endings, or sun endings
+    //
+}
 
 
 
@@ -38,7 +49,6 @@ let newBackground = 'red';
 
 //assign event listenrs:
 choiceOne.addEventListener('click', makeChoice);
-
 choiceTwo.addEventListener('click', makeChoice);
 
 
@@ -50,15 +60,6 @@ console.log('passed changeBackground');
 //remove divs()
 removeDivs();
 console.log('passed removeDivs');
-
-
-  //go through main removing divs
-  /*
-  while(divParent.firstChild){
-    divParent.removeChild(divParent.firstChild);
-  }
-  */
-};
 //remove (animated)
 //find text
 //display text (animated)
@@ -67,3 +68,4 @@ console.log('passed removeDivs');
   //give event listeners
 //display divs (animated)
 //await response
+};
