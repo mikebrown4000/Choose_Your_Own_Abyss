@@ -81,12 +81,15 @@ function evalChoice(ev){
   if(newChoice === 'choiceOne'){
     //I think there should be other content here
     newBackground = 'red';
+    //assign text?
   } else if (newChoice === 'choiceTwo'){
     //I think there should be other content here
     newBackground = 'green';
+    //assign text?
   } else if (newChoice === 'choiceThree'){
     //I think there should be other content here
     newBackground = 'orange';
+    //assign text?
   }
   //call make choice
   makeChoice();
@@ -168,22 +171,17 @@ function loadNewWorld(){
   //changeBackground animated
   changeBackground();
   //find text
-  //display text (animated)
+  //*********display text (animated)******
   //change gamestate (make new divs)
   decideDivs();
-  //
+  //make divs
   findChoices();
   //give event listeners
   attachListeners();
   //display divs (animated)
   //await response
   //get passed user decision and gamestate
-    //// IDEA:  check choice counter?
-  //make divs accordingly
-  //if statement if first decision:
-    //make giant divs,fuzzy divs, or sun divs
-  //else make giant endings, fuzzy endings, or sun endings
-    //
+    //// IDEA:  check choice counter
 };
 
 
