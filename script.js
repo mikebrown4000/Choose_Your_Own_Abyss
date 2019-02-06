@@ -13,7 +13,7 @@ let userLocation = [5,14];
 let newChoice = '';
 let newBackground = 'red';
 let counter = 0;
-
+let newText = '';
 
 //*************FUNCTION CITY BABY!!!!***************
 
@@ -75,27 +75,6 @@ function makeSunDivs(){
   choiceThree.id = "choiceThree";
 };
 
-//evaluates choice with target. calls by make choice
-function evalChoice(ev){
-  //conditional to change background
-  if(newChoice === 'choiceOne'){
-    //I think there should be other content here
-    newBackground = 'red';
-    //assign text?
-  } else if (newChoice === 'choiceTwo'){
-    //I think there should be other content here
-    newBackground = 'green';
-    //assign text?
-  } else if (newChoice === 'choiceThree'){
-    //I think there should be other content here
-    newBackground = 'orange';
-    //assign text?
-  }
-  //call make choice
-  makeChoice();
-}
-
-
 //removeDivs Declaration
 function removeDivs(){
   console.log('entered removeDivs');
@@ -135,6 +114,50 @@ function attachListeners(){
   });
 };
 
+/*
+findEndingText(){
+  //evaluates final ending selection and passes displayEndingText the ending text.
+}
+*/
+
+function findChoices(){
+  const choiceOne = document.getElementById('choiceOne');
+  console.log(choiceOne);
+  const choiceTwo = document.getElementById('choiceTwo');
+  console.log(choiceTwo);
+  const choiceThree = document.getElementById('choiceThree');
+  console.log(choiceThree);
+};
+
+function findChoiceText(userChoice){
+  //evaluates user selection and passes RETURNED VALUE (choiceText) to displayBodyText.
+  let choiceText = '';
+  if(newChoice === 'choiceOne'){
+    choiceText = 'GIANT CHOICE text';
+  }else if(newChoice === 'choiceTwo'){
+    choiceText = 'FUZZY CHOICE text';
+  }else if(newChoice === 'choiceThree'){
+    choiceText = 'SUN CHOICE text';
+  }
+  return choiceText;
+};
+
+//display body text
+//this should be called after findChoiceText and pass it the choice selection.
+function displayChoiceText(text){
+  console.log('Entered Display Body Text');
+  let newBody = document.createElement('p');
+  newBody.textContent = text;
+  document.querySelector('h2').appendChild(newBody);
+};
+
+function removeChoiceText(){
+  console.log('Entered Remove Body Text');
+  const textToRemove = document.querySelector('h2');
+  textToRemove.removeChild(textToRemove.firstChild);
+};
+
+
 //changeBackground Declaration:
 function changeBackground(){
   console.log('changeBackground called');
@@ -146,32 +169,45 @@ function changeBackground(){
 function makeChoice(){
   //remove divs()
   removeDivs();
-
+  removeChoiceText();
   //assign background
   if(counter<1){
   loadNewWorld();
   counter++;
   }
+
+  //findEndingText();
+  //displayText();
 };
 
-function findChoices(){
-  const choiceOne = document.getElementById('choiceOne');
-  console.log(choiceOne);
-  const choiceTwo = document.getElementById('choiceTwo');
-  console.log(choiceTwo);
-  const choiceThree = document.getElementById('choiceThree');
-  console.log(choiceThree);
+//evaluates choice with target. calls by make choice
+function evalChoice(ev){
+  //conditional to change background
+  if(newChoice === 'choiceOne'){
+    newText = 'choiceOne';
+    newBackground = 'red';
+  } else if (newChoice === 'choiceTwo'){
+    //I think there should be other content here
+    newText = 'choiceTwo';
+    newBackground = 'green';
+    //assign text?
+  } else if (newChoice === 'choiceThree'){
+    //I think there should be other content here
+    newText = 'choiceThree';
+    newBackground = 'orange';
+    //assign text?
+  }
+  //call make choice
+  makeChoice();
 }
 
-
 //this is going to be a goddamn mess of a function..
-
-
 function loadNewWorld(){
   //changeBackground animated
   changeBackground();
-  //find text
-  //*********display text (animated)******
+  //***find and displayText*** (hopefully animated)
+  let text = findChoiceText(newText);
+  displayChoiceText(text);
   //change gamestate (make new divs)
   decideDivs();
   //make divs
@@ -187,6 +223,107 @@ function loadNewWorld(){
 
 //*********FUNCTION CITY LIMITS***************
 
+//*********TEXT-OPOLIS************************
+  // introduction:
+  /* Why hello, tiny wanderer!
+  I must say you surprised me!
+  I'm not sure how you arrived here.. You must be terrible at directions
+  Ahh, forgive me, I forgot to introduce myself...
+  I am the void.
+  ... It's been quite some time since I have had a visitor,
+  and I am not usually one for pleasantries ... perhaps you would like to play a game?
+  Of course you do! Before you appear three doors.
+  One is very tall, one is very fluffy, and one is very bright.
+  Which one do you enter?
+
+  //Tall door
+  You find yourself in an enormous chamber too large for any normal human.
+  Soon enough you start to hear the wailing of an enormous creature.
+  You gaze upon a giant. You've never seen one before, or perhaps you have,
+  but he does not appear to notice you. He is incredibly upset,
+  sobbing rather uncoothly at his gargantuan kitchen table
+  You must act quickly before he takes you for vermin.
+  You may either comfort the pitiful brute in his time of need,
+  attempt to steal his food because you have suddenly noticed how hungry you are,
+  or attempt to escape the way you came..
+  What will you do?
+    //Comfort
+    You waddle, terrified, up to the distraught beast, and pet his monstrously large foot.
+    He is immidiately taken aback by your kindness and tells you everything.
+    He is so appreciative of your ability to listen and your palpable concern for his distress,
+    he keeps you as his loyal pet. You die peacefully in your keeper's arms 4 giant-years later without regrets.
+    //Steal
+    You attempt quite enthusiastically to burgle a single crumb from the fantastically full pantry.
+    You have a mountain of a pastry crumb in your arms, but before you know it
+    you are lifted into the air and placed rather unpleasantly into a jar.
+    The giant, distracted by his personal tragedy, has forgotten the addition
+    of air holes for your new glass prison, and you sufficate in minutes.
+    //Escape
+    You sprint backwards in the direction you entered, just barely entering the
+    threshold of the place from which you came. Alas, the door is slammed with such force that you
+    and your corporal body are irreperably devasteated by its unwavering swing.
+    Pity..
+
+  //Fuzzy Door
+  You find yourself in a chamber of an uncountable amount of small, redicously
+  fuzzy creatures of all shapes and sizes though most of them are not much
+  larger than (what you would call in your world) a basketball.
+  You may pet them, sing to them, or challenge the largest amongst them to assert
+  your dominance as alpha of the alien-like species.
+  What will you do?
+    //Pet
+    You are immidiately overcome by your pet owner instincts, and politely pet
+    every creature that you can. All the creatures rejoice in their newfound
+    domestication. You spend what seems like hours naming and appreciating them and their
+    subtle nuances. You inevitably fall asleep. They naturally curl up next to you, peacefully
+    covering you to keep you warm... All of them.
+    You sufficate in your sleep, but it was undoubtedly a wonderful day.
+    //Sing
+    You arrive, strangely if I may add, at the idea of singing to the creatures.
+    As you begin your song- the creatures are instinctively overcome with a preternatural
+    rage, and devour you like pirannas would a rotisserie chicken.
+    Pity..
+    //Challenge
+    You decide that you must assert your dominance in order to preside and live
+    in harmony and fear with these creatures.
+    Out of nowhere, a shadow the size of a trailer truck seems to blanket you.
+    The other creatures scurry away in understandable fear of the bulldozer-esque,
+    fluffy creature.
+    You are demolished in one swift stomp, but your body serves as nourishment
+    to the colony for a brief blip in time.
+
+  //Bright Door
+  You are now the sun.
+  You are flooded with new sensations and knowlege from your planetary life up
+  until this point, but still, inexpicably, remember your momentary experiences
+  as a human, however insignificant they may seem now in conjunction with your
+  newfound perspective.
+  You may explore the galaxy, crash into the earth, or live out your exceptionally
+  long life as sustainer and arbiter of this planetary system.
+  What will you do?
+    //Explore
+    You spend the rest of your years making new friends in other systems, taking
+    exceptional precautions not to collide or linger in orbit for too long.
+    It is an wonderful, wonderful life.
+    //Crash
+    You decide to test yourself to see whether or not you are dreaming by crashing
+    into the earth. With a subtle shift of your gasseous composure, you careen
+    into your old home consuming the other planets between you and it as well.
+    You feel, what you would have previously conceived in your human
+    venacular, the sensation of a single raindrop falling on your face.
+    You are not dreaming. The human race and everything it has ever accomplished
+    is erased from the cosmic canvas of the universe.
+    You are unphased, there is much to be done after all.
+    //Live
+    Despite your newfound and overwhelming knowlege of the universe and its machinations,
+    You cannot shake your responsibility to the earth. You live out your years sustaining your home,
+    hoping that your planet makes a significant shift towards solar power. You're
+    quite fond of solar power. The world and your view of it slowly, over the course of millions of years,
+    grow dark. You supernova, in such an extravagent fasion, the surrounding planets for
+    lightyears take notice. Satisfied, Your last thought is of humans and the other
+    life forms in the universe sustained by stars like you.
+
+  */
 
 
 
