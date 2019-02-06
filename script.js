@@ -134,7 +134,7 @@ function findChoices(){
 function findChoiceText(userChoice){
   //evaluates user selection and passes RETURNED VALUE (choiceText) to displayBodyText.
   let choiceText = '';
-  if(newChoice === 'choiceOne'){
+  if(userChoice === 'choiceOne'){
     //result of selecting the tall door
     choiceText = `You find yourself in an enormous chamber too large for any normal human.
     Soon enough you start to hear the wailing of an enormous creature.
@@ -146,7 +146,7 @@ function findChoiceText(userChoice){
     attempt to steal his food because you have suddenly noticed how hungry you are,
     or attempt to escape by going back the way you came..
     What will you do?`;
-  }else if(newChoice === 'choiceTwo'){
+  }else if(userChoice === 'choiceTwo'){
     //result of selecting the fuzzy door
     choiceText = `You find yourself in a chamber of an uncountable amount of small, redicously
     fuzzy creatures of all shapes and sizes though most of them are not much
@@ -154,7 +154,7 @@ function findChoiceText(userChoice){
     You may pet them, sing to them, or challenge the largest amongst them to assert
     your dominance as alpha of the alien-like species.
     What will you do?`;
-  }else if(newChoice === 'choiceThree'){
+  }else if(userChoice === 'choiceThree'){
     //result ofd selecting the bright door
     choiceText = `You are now the sun.
     You are flooded with new sensations and knowlege from your planetary life up
@@ -168,8 +168,34 @@ function findChoiceText(userChoice){
   return choiceText;
 };
 
-function findEndingText(newChoice,finalChoice){
+function findEndingText(firstChoice,finalChoice){
   console.log('entered find final text');
+  console.log(`first choice was ${firstChoice}`);
+  let endingText = '';
+  //giant door endings
+  if(firstChoice === 'choiceOne' && finalChoice === 'choiceOne'){
+      endingText = 'chose giant choice 1';
+  }else if (firstChoice==='choiceOne'&& finalChoice === 'choiceTwo') {
+      endingText = 'chose giant choice 2';
+  }else if (firstChoice==='choiceOne'&& finalChoice === 'choiceThree') {
+      endingText = 'chose giant choice 3';
+  }else if(firstChoice === 'choiceTwo'&& finalChoice === 'choiceOne'){
+  //fuzzy door endings
+  }else if(firstChoice === 'choiceTwo' && finalChoice === 'choiceOne') {
+      endingText = 'chose fuzzy choice 1';
+  }else if (firstChoice === 'choiceTwo' && finalChoice === 'choiceTwo') {
+      endingText = 'chose fuzzy choice 2';
+  }else if (firstChoice === 'choiceTwo' && finalChoice === 'choiceThree') {
+      endingText = 'chose fuzzy choice 3';
+  //sun door endings
+  }else if(firstChoice === 'choiceThree' && finalChoice === 'choiceOne') {
+      endingText = 'chose sun choice 1';
+  }else if (firstChoice === 'choiceThree' && finalChoice === 'choiceTwo') {
+      endingText = 'chose sun choice 2';
+  }else if (firstChoice === 'choiceThree' && finalChoice === 'choiceThree') {
+      endingText = 'chose sun choice 3';
+  }
+  return endingText;
 };
 
 //display text
@@ -201,14 +227,16 @@ function makeChoice(){
   removeChoiceText();
   //assign background
   if(counter<1){
-  loadNewWorld();
-  counter++;
+    loadNewWorld();
+    counter++;
+  }else{
+    let finalText = ''
+    finalText = findEndingText(newText,finalChoice);
+    displayText(finalText);
   }
-  let finalText = findEndingText(finalChoice);
-  displayText(finalText);
   //findEndingText();
   //displayText();
-};
+  };
 
 //evaluates choice with target. calls by make choice
 function evalChoice(ev){
@@ -237,14 +265,16 @@ function evalChoice(ev){
       finalChoice = 'choiceTwo';
     } else if (newChoice === 'choiceThree'){
       finalChoice = 'choiceThree';
-  }
-};
+    }
+  };
   //call make choice
+  firstChoiceMade = true;
   makeChoice();
 }
 
 //this is going to be a goddamn mess of a function..
 function loadNewWorld(){
+  console.log('enetered load new world');
   //changeBackground animated
   changeBackground();
   //***find and displayText*** (hopefully animated)
