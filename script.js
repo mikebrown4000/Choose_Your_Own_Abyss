@@ -14,6 +14,8 @@ let newChoice = '';
 let newBackground = 'red';
 let counter = 0;
 let newText = '';
+let firstChoiceMade = false;
+let finalChoice = ''
 
 //*************FUNCTION CITY BABY!!!!***************
 
@@ -133,19 +135,47 @@ function findChoiceText(userChoice){
   //evaluates user selection and passes RETURNED VALUE (choiceText) to displayBodyText.
   let choiceText = '';
   if(newChoice === 'choiceOne'){
-    choiceText = 'GIANT CHOICE text';
+    //result of selecting the tall door
+    choiceText = `You find yourself in an enormous chamber too large for any normal human.
+    Soon enough you start to hear the wailing of an enormous creature.
+    You gaze upon a giant. You've never seen one before, or perhaps you have,
+    but he does not appear to notice you. He is incredibly upset,
+    sobbing rather uncoothly at his gargantuan kitchen table
+    You must act quickly before he takes you for vermin.
+    You may either comfort the pitiful brute in his time of need,
+    attempt to steal his food because you have suddenly noticed how hungry you are,
+    or attempt to escape by going back the way you came..
+    What will you do?`;
   }else if(newChoice === 'choiceTwo'){
-    choiceText = 'FUZZY CHOICE text';
+    //result of selecting the fuzzy door
+    choiceText = `You find yourself in a chamber of an uncountable amount of small, redicously
+    fuzzy creatures of all shapes and sizes though most of them are not much
+    larger than (what you would call in your world) a basketball.
+    You may pet them, sing to them, or challenge the largest amongst them to assert
+    your dominance as alpha of the alien-like species.
+    What will you do?`;
   }else if(newChoice === 'choiceThree'){
-    choiceText = 'SUN CHOICE text';
+    //result ofd selecting the bright door
+    choiceText = `You are now the sun.
+    You are flooded with new sensations and knowlege from your planetary life up
+    until this point, but still, inexpicably, remember your momentary experiences
+    as a human, however insignificant they may seem now in conjunction with your
+    newfound perspective.
+    You may explore the galaxy, crash into the earth, or live out your exceptionally
+    long life as sustainer and arbiter of this planetary system.
+    What will you do?`;
   }
   return choiceText;
 };
 
-//display body text
+function findEndingText(newChoice,finalChoice){
+  console.log('entered find final text');
+};
+
+//display text
 //this should be called after findChoiceText and pass it the choice selection.
-function displayChoiceText(text){
-  console.log('Entered Display Body Text');
+function displayText(text){
+  console.log('Entered Display Text');
   let newBody = document.createElement('p');
   newBody.textContent = text;
   document.querySelector('h2').appendChild(newBody);
@@ -156,7 +186,6 @@ function removeChoiceText(){
   const textToRemove = document.querySelector('h2');
   textToRemove.removeChild(textToRemove.firstChild);
 };
-
 
 //changeBackground Declaration:
 function changeBackground(){
@@ -175,7 +204,8 @@ function makeChoice(){
   loadNewWorld();
   counter++;
   }
-
+  let finalText = findEndingText(finalChoice);
+  displayText(finalText);
   //findEndingText();
   //displayText();
 };
@@ -183,20 +213,32 @@ function makeChoice(){
 //evaluates choice with target. calls by make choice
 function evalChoice(ev){
   //conditional to change background
-  if(newChoice === 'choiceOne'){
-    newText = 'choiceOne';
-    newBackground = 'red';
-  } else if (newChoice === 'choiceTwo'){
-    //I think there should be other content here
-    newText = 'choiceTwo';
-    newBackground = 'green';
-    //assign text?
-  } else if (newChoice === 'choiceThree'){
-    //I think there should be other content here
-    newText = 'choiceThree';
-    newBackground = 'orange';
-    //assign text?
+  if(firstChoiceMade===false){
+    if(newChoice === 'choiceOne'){
+      newText = 'choiceOne';
+      newBackground = 'red';
+    } else if (newChoice === 'choiceTwo'){
+      //I think there should be other content here
+      newText = 'choiceTwo';
+      newBackground = 'green';
+      //assign text?
+    } else if (newChoice === 'choiceThree'){
+      //I think there should be other content here
+      newText = 'choiceThree';
+      newBackground = 'orange';
+      //assign text?
+    }
+  //if firstChoiceMade is true, we keep newChoice the same so we can find the
+  //final text with reference to the users first decision.
+  } else if (firstChoiceMade === true) {
+    if(newChoice === 'choiceOne'){
+      finalChoice = 'choiceOne';
+    } else if (newChoice === 'choiceTwo'){
+      finalChoice = 'choiceTwo';
+    } else if (newChoice === 'choiceThree'){
+      finalChoice = 'choiceThree';
   }
+};
   //call make choice
   makeChoice();
 }
@@ -207,7 +249,7 @@ function loadNewWorld(){
   changeBackground();
   //***find and displayText*** (hopefully animated)
   let text = findChoiceText(newText);
-  displayChoiceText(text);
+  displayText(text);
   //change gamestate (make new divs)
   decideDivs();
   //make divs
