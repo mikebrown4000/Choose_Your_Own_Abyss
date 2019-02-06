@@ -24,38 +24,43 @@ function makeGiantDivs(){
   //comfort giant choice
   const choiceOne = document.createElement('div');
   choiceOne.textContent = 'Comfort';
-  document.querySelector('section').appendChild(choiceOne);
+  document.getElementById('choices').appendChild(choiceOne);
   choiceOne.id = "choiceOne";
+  choiceOne.classList.add('choice');
   //steal giant choice
   const choiceTwo = document.createElement('div');
   choiceTwo.textContent = 'Steal';
-  document.querySelector('section').appendChild(choiceTwo);
+  document.getElementById('choices').appendChild(choiceTwo);
   choiceTwo.id = "choiceTwo";
+  choiceTwo.classList.add('choice');
   //escape giant choice
   const choiceThree = document.createElement('div');
   choiceThree.textContent = 'Escape';
-  document.querySelector('section').appendChild(choiceThree);
+  document.getElementById('choices').appendChild(choiceThree);
   choiceThree.id = "choiceThree";
+  choiceThree.classList.add('choice');
 };
 
 function makeFuzzyDivs(){
   console.log('entered fuzzy divs');
   //pet fuzzys choice
   const choiceOne = document.createElement('div');
-  choiceOne.textContent = 'Love';
-  document.querySelector('section').appendChild(choiceOne);
+  choiceOne.textContent = 'Pet';
+  document.getElementById('choices').appendChild(choiceOne);
   choiceOne.id = "choiceOne";
+  choiceOne.classList.add('choice');
   //challenge fuzzys choice
   const choiceTwo = document.createElement('div');
   choiceTwo.textContent = 'Challenge';
-  document.querySelector('section').appendChild(choiceTwo);
+  document.getElementById('choices').appendChild(choiceTwo);
   choiceTwo.id = "choiceTwo";
+  choiceTwo.classList.add('choice');
   //sing fuzzys choice
   const choiceThree = document.createElement('div');
   choiceThree.textContent = 'Sing';
-  document.querySelector('section').appendChild(choiceThree);
+  document.getElementById('choices').appendChild(choiceThree);
   choiceThree.id = "choiceThree";
-
+  choiceThree.classList.add('choice');
 };
 
 function makeSunDivs(){
@@ -63,24 +68,27 @@ function makeSunDivs(){
   //crash sun choice
   const choiceOne = document.createElement('div');
   choiceOne.textContent = 'Crash';
-  document.querySelector('section').appendChild(choiceOne);
+  document.getElementById('choices').appendChild(choiceOne);
   choiceOne.id = "choiceOne";
+  choiceOne.classList.add('choice');
   //live sun choice
   const choiceTwo = document.createElement('div');
   choiceTwo.textContent = 'Live';
-  document.querySelector('section').appendChild(choiceTwo);
+  document.getElementById('choices').appendChild(choiceTwo);
   choiceTwo.id = "choiceTwo";
+  choiceTwo.classList.add('choice');
   //explore sun choice
   const choiceThree = document.createElement('div');
   choiceThree.textContent = 'Explore';
-  document.querySelector('section').appendChild(choiceThree);
+  document.getElementById('choices').appendChild(choiceThree);
   choiceThree.id = "choiceThree";
+  choiceThree.classList.add('choice');
 };
 
 //removeDivs Declaration
 function removeDivs(){
   console.log('entered removeDivs');
-  const divParent = document.querySelector('section');
+  const divParent = document.getElementById('choices');
   console.log(divParent);
   while(divParent.firstChild){
     //add to fade away CSS class?
@@ -174,26 +182,77 @@ function findEndingText(firstChoice,finalChoice){
   let endingText = '';
   //giant door endings
   if(firstChoice === 'choiceOne' && finalChoice === 'choiceOne'){
-      endingText = 'chose giant choice 1';
-  }else if (firstChoice==='choiceOne'&& finalChoice === 'choiceTwo') {
-      endingText = 'chose giant choice 2';
-  }else if (firstChoice==='choiceOne'&& finalChoice === 'choiceThree') {
-      endingText = 'chose giant choice 3';
-  }else if(firstChoice === 'choiceTwo'&& finalChoice === 'choiceOne'){
+      endingText = `You waddle, terrified, up to the distraught beast, and pet his monstrously large foot.
+      He is immidiately taken aback by your kindness and tells you everything.
+      He is so appreciative of your ability to listen and your palpable concern for his distress,
+      he keeps you as his loyal pet. You die peacefully in your keeper's arms 4 giant-years later without regrets.`;
+
+  }else if (firstChoice==='choiceOne' && finalChoice === 'choiceTwo') {
+      endingText = `You attempt quite enthusiastically to burgle a single crumb from the fantastically full pantry.
+      You have a mountain of a pastry crumb in your arms, but before you know it
+      you are lifted into the air and placed rather unpleasantly into a jar.
+      The giant, distracted by his personal tragedy, has forgotten the addition
+      of air holes for your new glass prison, and you sufficate in minutes.`;
+
+  }else if (firstChoice==='choiceOne' && finalChoice === 'choiceThree') {
+      endingText = `You sprint backwards in the direction you entered, just barely crossing the
+      threshold of the place from which you came. Alas, out of the corner of your eye, you see
+      the door through which you entered being slammed at an ungodly velocity. You attempt to escape
+      its path but fail miserably. It obliterates you in the same way that the windshiled of a car, traveling
+      on the auto-bahn, would decimate a fly; you and your corporal body are irreperably
+      devasteated by the unwavering force of its swing.
+      Pity..`;
+
   //fuzzy door endings
   }else if(firstChoice === 'choiceTwo' && finalChoice === 'choiceOne') {
-      endingText = 'chose fuzzy choice 1';
+      endingText = `You are immidiately overcome by your pet owner instincts, and politely pet
+      every creature that you can. All the creatures rejoice in their newfound
+      domestication. You spend what seems like hours naming and appreciating them and their
+      subtle nuances. You inevitably fall asleep. They naturally curl up next to you, peacefully
+      covering you to keep you warm... All of them.
+      You sufficate in your sleep, but it was undoubtedly a wonderful day.`;
+
   }else if (firstChoice === 'choiceTwo' && finalChoice === 'choiceTwo') {
-      endingText = 'chose fuzzy choice 2';
+      endingText = `You decide that you must assert your dominance in order to preside and live
+      in both harmony and fear with these newfound creatures.
+      Out of nowhere, a shadow the size of a trailer truck seems to blanket you.
+      The other creatures scurry away in understandable terror of the bulldozer-esque,
+      fluffy creature that is now towering over you.
+      Despite your feeble attempts to apologize, you are demolished in one swift stomp,
+      but your body serves as nourishment to the colony for a brief blip in time.`;
+
   }else if (firstChoice === 'choiceTwo' && finalChoice === 'choiceThree') {
-      endingText = 'chose fuzzy choice 3';
+      endingText = `You arrive, strangely if I may add, at the idea of singing to the creatures.
+      As you begin your song- the creatures are instinctively overcome with a preternatural
+      rage, and devour you like pirannas would a rotisserie chicken.
+      Pity..`;
+
   //sun door endings
   }else if(firstChoice === 'choiceThree' && finalChoice === 'choiceOne') {
-      endingText = 'chose sun choice 1';
+      endingText = `You decide to test yourself to see whether or not you are dreaming by crashing
+      into the earth. With a subtle shift of your gasseous composure, you careen
+      into your old home consuming the other planets between you and it as well.
+      You feel, what you would have previously conceived in your human
+      venacular, the sensation of a single raindrop falling on your face.
+      You are not dreaming. The human race and everything it has ever accomplished
+      is erased from the cosmic canvas of the universe.
+      You are unphased, after all, there is much to be done.`;
+
   }else if (firstChoice === 'choiceThree' && finalChoice === 'choiceTwo') {
-      endingText = 'chose sun choice 2';
+      endingText = `Despite your newfound and overwhelming knowlege of the universe and its machinations,
+      You cannot shake your responsibility to the earth. You live out your years sustaining your old home,
+      hoping that your planet makes a significant shift towards solar power. You're
+      quite fond of solar power these 'days'. The world and your view of it slowly, over the course of millions of years,
+      grows dark. Your time is nearing its end. You supernova, in such an extravagent fasion,
+      the surrounding stars in your galaxy for lightyears around take brief notice.
+      Satisfied, Your last thought is of humans and the other
+      life forms in the universe created, sustained, and destroyed by stars like you.`;
+
   }else if (firstChoice === 'choiceThree' && finalChoice === 'choiceThree') {
-      endingText = 'chose sun choice 3';
+      endingText = `You spend the rest of your years making new friends in other systems, taking
+      exceptional precaution not to collide or linger in orbit for too long.
+      It is an wonderful, wonderful life.`;
+
   }
   return endingText;
 };
