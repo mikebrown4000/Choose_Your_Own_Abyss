@@ -457,8 +457,30 @@ function loadNewWorld(){
   */
 
 
-
-
 //*********Program Start**************
+//introduction
+//
+introArray = [`Why hello, tiny wanderer!`,`I must say you surprised me!`,`I'm not sure how you arrived here..`,
+ `You must be terrible at directions`,`Ahh, forgive me, I forgot to introduce myself...`,
+`I am the void.`,`... It's been quite some time since I have had a visitor!`,`and I am not usually one for pleasantries ...`,
+`Perhaps you would like to play a game? Of course you do!`, `Before you appear three doors.`,
+`One is very tall, one is very fluffy, and one is very bright.`,`Which one do you enter?`];
+
+//fucntion that takes the intro array, takes the first element,
+//adds it to the intro css class animates it until the arrays is empty.
+//enter first choice state.
+
+testArray = [`line 1 is showing now`,`line 2 is showing now`,`line 3 is showing now`,`this is the last line!`]
+
+function introTextSlide(){
+  for (var i = 0; i < testArray.length; i++) {
+    let newLine = document.getElementById('titleText');
+    newLine.textContent = testArray[i];
+    newLine.classList.add('introduction');
+    setTimeout(function(){console.log('outputline')} ,10000)
+  }
+};
+
+introTextSlide();
 findChoices();
 attachListeners();
