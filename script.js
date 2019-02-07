@@ -303,16 +303,16 @@ function evalChoice(ev){
   if(firstChoiceMade===false){
     if(newChoice === 'choiceOne'){
       newText = 'choiceOne';
-      newBackground = 'red';
+      newBackground = 'url(./images/giants-bkg.jpg)';
     } else if (newChoice === 'choiceTwo'){
       //I think there should be other content here
       newText = 'choiceTwo';
-      newBackground = 'green';
+      newBackground = 'url(./images/fuzzy-bkg.jpg)';
       //assign text?
     } else if (newChoice === 'choiceThree'){
       //I think there should be other content here
       newText = 'choiceThree';
-      newBackground = 'orange';
+      newBackground = 'url(./images/sun-bkg.jpg)';
       //assign text?
     }
   //if firstChoiceMade is true, we keep newChoice the same so we can find the
@@ -460,27 +460,59 @@ function loadNewWorld(){
 //*********Program Start**************
 //introduction
 //
-introArray = [`Why hello, tiny wanderer!`,`I must say you surprised me!`,`I'm not sure how you arrived here..`,
- `You must be terrible at directions`,`Ahh, forgive me, I forgot to introduce myself...`,
-`I am the void.`,`... It's been quite some time since I have had a visitor!`,`and I am not usually one for pleasantries ...`,
-`Perhaps you would like to play a game? Of course you do!`, `Before you appear three doors.`,
-`One is very tall, one is very fluffy, and one is very bright.`,`Which one do you enter?`];
+const introText1 = `Why hello, tiny wanderer! I must say! You surprised me!`
+const introText2 = `I'm not sure how you arrived here.. You must be terrible at directions!`
+const introText3 = `Ahh, forgive me, I forgot to introduce myself...`
+const introText4 = `I am the void...`
+const introText5 = `Perhaps you would like to play my game? ... Of course you would!`
+const introText6 = `Before you appear three doors.. One is very tall, one is very fluffy, and one is very bright. Which one do you enter?;`
 
 //fucntion that takes the intro array, takes the first element,
 //adds it to the intro css class animates it until the arrays is empty.
 //enter first choice state.
 
-testArray = [`line 1 is showing now`,`line 2 is showing now`,`line 3 is showing now`,`this is the last line!`]
+/*
+let i = 0;
+let newLine = document.getElementById('titleText');
+newLine.classList.add('introduction');
 
-function introTextSlide(){
-  for (var i = 0; i < testArray.length; i++) {
-    let newLine = document.getElementById('titleText');
-    newLine.textContent = testArray[i];
-    newLine.classList.add('introduction');
-    setTimeout(function(){console.log('outputline')} ,10000)
-  }
-};
+const introTextSlide = function(){
+  textInterval  = setInterval(function(){
+     if(i === testArray.length){
+        clearInterval(textInterval);
+     }
+     newLine.textContent = testArray[i];
+     console.log(i)
+     i++;
+  }, 1000);
+}
+*/
+function introTextSlideshow(){
+//find h1 give it animation and text
+const introTextLoc = document.getElementById('silkscreenInner');
+const introText1dom = document.createElement('h2');
+introText1dom.textContent = introText1;
+introText1dom.classList.add('introText1class');
+introTextLoc.appendChild(introText1dom);
+setTimeout(function () {
+  console.log('removingchild');
+  introTextLoc.removeChild(introText1dom);
+}, 5001);
+// delay h2 give it animation and text
+const introText2dom = document.createElement('h2');
+introText2dom.textContent = introText2;
+introText2dom.classList.add('introText2class');
+introTextLoc.appendChild(introText2dom);
+setTimeout(function () {
+  console.log('removingchild');
+  introTextLoc.removeChild(introText2dom);
+}, 10001);
 
-introTextSlide();
+//remove div silkscreen to reveal the game.
+
+}
+
+
+introTextSlideshow();
 findChoices();
 attachListeners();
