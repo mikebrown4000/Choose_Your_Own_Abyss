@@ -71,15 +71,21 @@ h1 {
 
     width: 100%;
     height: 100%;
-    background:rgba(0,0,0,0.9);
+    background:rgba(0,0,0,1);
     z-index: 100;
+    animation-name: SilkscreenAnimate;
+    animation-duration: 5s;
+    animation-delay: 23s;
+    animation-iteration-count: 1;
 }
 
 #silkscreenInner{
-  position: fixed;
+  text-align: center;
   width:75%;
   height:75%;
   z-index: 101;
+  margin: 20px;
+  padding: 40px;
 }
 
 /* all this non-sense is for the intro, which at this point.. wgaf?*/
@@ -90,35 +96,63 @@ h1 {
   opacity:0;
   color: white;
   font-family: 'Ubuntu Mono', monospace;
-  font-size: 80px;
+  font-size: 40px;
   z-index: 200;
   animation-name: introText1animate;
-  animation-duration: 5s;
+  animation-duration: 8s;
   animation-iteration-count: 1;
 }
 .introText2class{
-  text-align: right;
+  text-align: center;
   opacity:0;
   color: white;
   font-family: 'Ubuntu Mono', monospace;
-  font-size: 80px;
+  font-size: 40px;
   z-index: 200;
   animation-name: introText2animate;
-  animation-duration: 5s;
-  animation-delay: 5s;
+  animation-duration: 7s;
+  animation-delay: 1s;
   animation-iteration-count: 1;
 }
 .introText3class{
+  text-align: center;
+  opacity:0;
+  color: white;
+  font-family: 'Ubuntu Mono', monospace;
+  font-size: 40px;
   z-index: 200;
+  animation-name: introText3animate;
+  animation-duration: 6s;
+  animation-delay: 2s;
+  animation-iteration-count: 1;
 }
+
 .introText4class{
+  text-align: center;
+  opacity:0;
+  color: black;
+  font-family: 'Anonymous Pro', monospace;
+  font-size: 60px;
+  z-index: 200;
+  animation-name: introText4animate;
+  animation-duration: 7s;
+  animation-delay: .5s;
+  animation-iteration-count: 1;
+  text-shadow: 0 0 12px #FFFFFF;
   z-index: 200;
 }
 .introText5class{
+  text-align: center;
+  opacity:0;
+  color: white;
+  font-family: 'Ubuntu Mono', monospace;
+  font-size: 40px;
   z-index: 200;
+  animation-name: introText3animate;
+  animation-duration: 6s;
+  animation-iteration-count: 1;
 }
 .introText6class{
-  z-index: 200;
 }
 /*
 SITE THIS IN READ ME!!!!! vvv
@@ -144,10 +178,12 @@ SITE THIS IN READ ME!!!!! vvv
 0%{
   opacity: 0;
   top: 25%;
+  bottom: -5rem;
   }
-60%{
+65%{
   opacity: 1;
   top: 25%;
+  bottom: 25%;
 }
 100%{
   opacity: 0;
@@ -157,11 +193,9 @@ SITE THIS IN READ ME!!!!! vvv
 @keyframes introText2animate {
   0%{
     opacity: 0;
-    top: 25%;
     }
-  60%{
+  65%{
     opacity: 1;
-    top: 25%;
   }
   100%{
     opacity: 0;
@@ -169,17 +203,49 @@ SITE THIS IN READ ME!!!!! vvv
 }
 
 @keyframes introText3animate {
-0%{}25%{}50%{}75%{}100%{}
+  0%{
+    opacity: 0;
+    }
+  65%{
+    opacity: 1;
+  }
+  100%{
+    opacity: 0;
+    }
 }
 
 @keyframes introText4animate {
-0%{}25%{}50%{}75%{}100%{}
+  0%{
+    opacity: 0;
+    }
+  65%{
+    font-size: 100px;
+    opacity: 1;
+  }
+  100%{
+    font-size: 100px;
+    opacity: 0;
+    }
 }
 
 @keyframes introText5animate {
-0%{}25%{}50%{}75%{}100%{}
+  0%{
+    opacity: 0;
+    }
+  65%{
+    font-size: 100px;
+    opacity: 1;
+  }
+  100%{
+    font-size: 100px;
+    opacity: 0;
+    }
 }
 
-@keyframes introText6animate {
-0%{}25%{}50%{}75%{}100%{}
+@keyframes SilkscreenAnimate {
+  0%{
+    }
+  100%{
+    background-color: rgba(0,0,0,0)
+    }
 }

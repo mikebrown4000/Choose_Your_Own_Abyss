@@ -9,15 +9,37 @@ console.log('connected');
 //6.REPEAT
 
 //global variables
-let userLocation = [5,14];
 let newChoice = '';
 let newBackground = 'red';
 let counter = 0;
 let newText = '';
 let firstChoiceMade = false;
 let finalChoice = ''
+let playAgain = true;
 
 //*************FUNCTION CITY BABY!!!!***************
+
+function makeStartDivs(){
+  console.log('making start divs');
+  //comfort giant choice
+  const choiceOne = document.createElement('div');
+  choiceOne.textContent = 'Tall';
+  document.getElementById('choices').appendChild(choiceOne);
+  choiceOne.id = "choiceOne";
+  choiceOne.classList.add('choice');
+  //steal giant choice
+  const choiceTwo = document.createElement('div');
+  choiceTwo.textContent = 'Fuzzy';
+  document.getElementById('choices').appendChild(choiceTwo);
+  choiceTwo.id = "choiceTwo";
+  choiceTwo.classList.add('choice');
+  //escape giant choice
+  const choiceThree = document.createElement('div');
+  choiceThree.textContent = 'Bright';
+  document.getElementById('choices').appendChild(choiceThree);
+  choiceThree.id = "choiceThree";
+  choiceThree.classList.add('choice');
+};
 
 function makeGiantDivs(){
   console.log('entered giant divs');
@@ -351,6 +373,16 @@ function loadNewWorld(){
     //// IDEA:  check choice counter
 };
 
+function resetGame(){
+  let newChoice = '';
+  let newBackground = 'red';
+  let counter = 0;
+  let newText = '';
+  let firstChoiceMade = false;
+  let finalChoice = ''
+  let playAgain = true;
+}
+
 
 //*********FUNCTION CITY LIMITS***************
 
@@ -463,8 +495,8 @@ function loadNewWorld(){
 const introText1 = `Why hello, tiny wanderer! I must say! You surprised me!`
 const introText2 = `I'm not sure how you arrived here.. You must be terrible at directions!`
 const introText3 = `Ahh, forgive me, I forgot to introduce myself...`
-const introText4 = `I am the void...`
-const introText5 = `Perhaps you would like to play my game? ... Of course you would!`
+const introText4 = `I AM THE VOID...`
+const introText5 = `Let's play a game...`
 const introText6 = `Before you appear three doors.. One is very tall, one is very fluffy, and one is very bright. Which one do you enter?;`
 
 //fucntion that takes the intro array, takes the first element,
@@ -494,21 +526,53 @@ const introText1dom = document.createElement('h2');
 introText1dom.textContent = introText1;
 introText1dom.classList.add('introText1class');
 introTextLoc.appendChild(introText1dom);
-setTimeout(function () {
-  console.log('removingchild');
-  introTextLoc.removeChild(introText1dom);
-}, 5001);
-// delay h2 give it animation and text
+
 const introText2dom = document.createElement('h2');
 introText2dom.textContent = introText2;
 introText2dom.classList.add('introText2class');
 introTextLoc.appendChild(introText2dom);
-setTimeout(function () {
-  console.log('removingchild');
-  introTextLoc.removeChild(introText2dom);
-}, 10001);
 
-//remove div silkscreen to reveal the game.
+const introText3dom = document.createElement('h2');
+introText3dom.textContent = introText3;
+introText3dom.classList.add('introText3class');
+introTextLoc.appendChild(introText3dom);
+
+//remove intro texts 1-3
+setTimeout(function () {
+  while(introTextLoc.firstChild){
+  console.log('removingchild');
+  introTextLoc.removeChild(introTextLoc.firstChild);
+  }
+}, 8000);
+
+//reveal animation 4 remove animation 4
+setTimeout(function(){
+const introText4dom = document.createElement('h1');
+introText4dom.textContent = introText4;
+introText4dom.classList.add('introText4class');
+introTextLoc.appendChild(introText4dom);
+console.log('appended i am void');
+}, 9000);
+
+
+setTimeout(function(){
+  const introText5dom = document.createElement('h2');
+  introText5dom.textContent = introText5;
+  introText5dom.classList.add('introText5class');
+  introTextLoc.appendChild(introText5dom);
+  console.log('appended lets play a game');
+}, 17000);
+
+//reduce silkscreen opacity, delete items & to reveal the game.
+setTimeout(function(){
+  while(introTextLoc.firstChild){
+  console.log('removingchild');
+  introTextLoc.removeChild(introTextLoc.firstChild);
+  }
+  const silkscreenLoc = document.getElementById('silkscreen');
+  silkscreenLoc.parentNode.removeChild(silkscreenLoc);
+}, 28000);
+
 
 }
 
