@@ -21,21 +21,21 @@ let playAgain = true;
 
 function makeStartDivs(){
   console.log('making start divs');
-  //comfort giant choice
+  //make giant choice
   const choiceOne = document.createElement('div');
-  choiceOne.textContent = 'Tall';
+  choiceOne.textContent = 'Tall Door';
   document.getElementById('choices').appendChild(choiceOne);
   choiceOne.id = "choiceOne";
   choiceOne.classList.add('choice');
-  //steal giant choice
+  //make fuzzy choice
   const choiceTwo = document.createElement('div');
-  choiceTwo.textContent = 'Fuzzy';
+  choiceTwo.textContent = 'Fuzzy Door';
   document.getElementById('choices').appendChild(choiceTwo);
   choiceTwo.id = "choiceTwo";
   choiceTwo.classList.add('choice');
-  //escape giant choice
+  //make sun choice
   const choiceThree = document.createElement('div');
-  choiceThree.textContent = 'Bright';
+  choiceThree.textContent = 'Bright Door';
   document.getElementById('choices').appendChild(choiceThree);
   choiceThree.id = "choiceThree";
   choiceThree.classList.add('choice');
@@ -289,7 +289,7 @@ function displayText(text){
 };
 
 function removeChoiceText(){
-  console.log('Entered Remove Body Text');
+  console.log('Entered Remove choice Text');
   const textToRemove = document.querySelector('h2');
   textToRemove.removeChild(textToRemove.firstChild);
 };
@@ -314,10 +314,9 @@ function makeChoice(){
     let finalText = ''
     finalText = findEndingText(newText,finalChoice);
     displayText(finalText);
+    makeFinalButton();
   }
-  //findEndingText();
-  //displayText();
-  };
+};
 
 //evaluates choice with target. calls by make choice
 function evalChoice(ev){
@@ -373,14 +372,50 @@ function loadNewWorld(){
     //// IDEA:  check choice counter
 };
 
+function makeFinalButton(){
+
+  const finalButton = document.createElement('div');
+  finalButton.textContent = 'Play Again?';
+  document.getElementById('choices').appendChild(finalButton);
+  finalButton.classList.add('choice');
+  finalButton.addEventListener('click', resetGame);
+
+  const finalButton2 = document.createElement('div');
+  finalButton2.textContent = 'Play Again!';
+  document.getElementById('choices').appendChild(finalButton2);
+  finalButton2.classList.add('choice');
+  finalButton2.addEventListener('click', resetGame);
+
+  const finalButton3 = document.createElement('div');
+  finalButton3.textContent = 'No Thanks';
+  document.getElementById('choices').appendChild(finalButton3);
+  finalButton3.classList.add('choice');
+  finalButton3.addEventListener('click', resetGame);
+}
+
 function resetGame(){
   let newChoice = '';
-  let newBackground = 'red';
+  let newBackground = '';
   let counter = 0;
   let newText = '';
   let firstChoiceMade = false;
   let finalChoice = ''
-  let playAgain = true;
+  const cB = document.querySelector('body');
+  cB.style.background = 'url(./images/void-bkg.jpeg)'
+  removeDivs();
+  removeChoiceText();
+  makeStartDivs();
+  console.log('made start');
+  findChoices();
+  console.log('found choices?');
+  console.log(choiceOne);
+  console.log(choiceTwo);
+  console.log(choiceThree);
+  attachListeners();
+  let welcomeBack = document.createElement('p');
+  welcomeBack.textContent = 'MWHAHAHAHA WELCOME BACK';
+  document.querySelector('h2').appendChild(welcomeBack);
+  console.log(counter);
 }
 
 
