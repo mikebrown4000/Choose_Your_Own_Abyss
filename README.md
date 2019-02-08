@@ -4,7 +4,7 @@ Button-based choose your own adventure game with interactive animations, multipl
 
 This game incorporates recursive code to manipulate, delete and reproduce DOM elements.
 
-ChooseYourOwnAbyss.surge.sh
+Choose_your_own_abyss.surge.sh
 
 Here is a snippet of code which is vital to its function:
 
